@@ -16,6 +16,11 @@ class Array
     end
   end
 
+  # Add the sy18nc-specific version of extract_options!
+  def sy18nc_extract_options!
+    extract_options!
+  end
+
   def append!(value)
     self.each do |v|
       v.append!(value)
