@@ -12,12 +12,12 @@ describe Sy18nc::Locale do
     locale = Sy18nc::Locale.new("spec/fixtures/devise.tr.yml")
     locale.hash.should_not be_empty
     locale.hash.should be_a_kind_of(Hash)
-    locale.synchronizable?.should be_true
+    locale.synchronizable?.should be_truthy
   end
 
   it "is not synchronizable when YAML is not valid" do
     t = Sy18nc::Locale.new("spec/fixtures/not_valid.yml")
-    t.synchronizable?.should be_false
+    t.synchronizable?.should be_falsey
   end
 
   it "fetches the locale body" do
@@ -30,21 +30,21 @@ describe Sy18nc::Locale do
   end
 
   it "writes the locale to file" do
-    File.exists?("en.yml").should be_false
+    File.exist?("en.yml").should be_falsey
     @locale.save
-    File.exists?("en.yml").should be_true
+    File.exist?("en.yml").should be_truthy
 
-    File.exists?("en.yml.bak").should be_false
+    File.exist?("en.yml.bak").should be_falsey
     @locale.save(backup: true)
-    File.exists?("en.yml.bak").should be_true
+    File.exist?("en.yml.bak").should be_truthy
 
-    File.exists?("locale_file.yml").should be_false
+    File.exist?("locale_file.yml").should be_falsey
     @locale.save(filename: "locale_file")
-    File.exists?("locale_file.yml").should be_true
+    File.exist?("locale_file.yml").should be_truthy
 
-    File.exists?("locale_file.yml.bak").should be_false
+    File.exist?("locale_file.yml.bak").should be_falsey
     @locale.save(filename: "locale_file", backup: true)
-    File.exists?("locale_file.yml.bak").should be_true
+    File.exist?("locale_file.yml.bak").should be_truthy
 
     cleanup
   end

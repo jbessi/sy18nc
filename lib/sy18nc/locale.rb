@@ -9,7 +9,7 @@ module Sy18nc
 
     def initialize(file)
       # create new yaml (file and localition)
-      create_new_locale_file(file) unless File.exists?(File.expand_path(file))
+      create_new_locale_file(file) unless File.exist?(File.expand_path(file))
 
       # than we load this file
       @name = File.basename(file,".*")

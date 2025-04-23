@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 describe Object do
   describe "#marked_fixme?" do
     subject { Object.new.marked_fixme? }
-    it { should be_false }
+    it { should be_falsey }
   end
 
   describe "#append!" do
@@ -51,12 +51,12 @@ describe String do
 
     context "when marked fixme" do
       let(:suffix) { "g FIXME" }
-      it { should be_true }
+      it { should be_truthy }
     end
 
     context "when not marked fixme" do
       let(:suffix) { "" }
-      it { should be_false }
+      it { should be_falsey }
     end
   end
 
